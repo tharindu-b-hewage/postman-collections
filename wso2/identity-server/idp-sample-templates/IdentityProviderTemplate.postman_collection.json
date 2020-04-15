@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "edca3f23-db8c-4c87-a749-03925bbc9acd",
+		"name": "WSO2 Identity Server - Identity Provider Template Rest API",
+		"description": "This document specifies a **Application Template Management RESTful API** for **WSO2 Identity Server** .\n\n\nContact Support:\n Name: WSO2\n Email: architecture@wso2.org",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "templates",
+			"item": [
+				{
+					"name": "{template Id}",
+					"item": [
+						{
+							"name": "Retrieve template by id",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{username}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{server-url}}/t/{{tenant-domain}}/api/server/v1/identity-providers/templates/:id",
+									"protocol": "https",
+									"host": [
+										"{{server-url}}"
+									],
+									"path": [
+										"t",
+										"{{tenant-domain}}",
+										"api",
+										"server",
+										"v1",
+										"identity-providers",
+										"templates",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"type": "string",
+											"value": "864e908f-63ca-4161-a56b-ec08e2571bc8"
+										}
+									]
+								},
+								"description": "This API provides the capability to retrieve the application template information by id."
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a template by id",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{username}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://{{server-url}}/t/{{tenant-domain}}/api/server/v1/identity-providers/templates/:id",
+									"protocol": "https",
+									"host": [
+										"{{server-url}}"
+									],
+									"path": [
+										"t",
+										"{{tenant-domain}}",
+										"api",
+										"server",
+										"v1",
+										"identity-providers",
+										"templates",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "480da372-a23a-48d4-837e-6c65cd87fbe6"
+										}
+									]
+								},
+								"description": "This API provides the capability to delete an application template by id.\n"
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4ba78c2b-422a-4f4f-90d2-8b1dd30a2f61",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c0391389-6881-44a1-ad5c-f0df44697adf",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "List Templates",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{server-url}}/t/{{tenant-domain}}/api/server/v1/identity-providers/templates",
+							"protocol": "https",
+							"host": [
+								"{{server-url}}"
+							],
+							"path": [
+								"t",
+								"{{tenant-domain}}",
+								"api",
+								"server",
+								"v1",
+								"identity-providers",
+								"templates"
+							]
+						},
+						"description": "This API provides the capability to retrieve the list of templates.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add provisioning and authentication enabled Google template",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Google\",\n  \"description\": \"Authenticate users with Google.\",\n  \"image\": \"google\",\n  \"category\": \"DEFAULT\",\n  \"displayOrder\": 1,\n  \"idp\": {\n    \"name\": \"Google\",\n    \"description\": \"Identity provider for Google Federation\",\n    \"image\": \"google\",\n    \"isPrimary\": false,\n    \"isFederationHub\": false,\n    \"homeRealmIdentifier\": \"\",\n    \"certificate\": {\n      \"certificates\": []\n    },\n    \"alias\": \"https://localhost:9444/oauth2/token\",\n    \"claims\": {\n      \"userIdClaim\": {\n        \"uri\": \"http://wso2.org/claims/username\"\n      },\n      \"roleClaim\": {\n        \"uri\": \"http://wso2.org/claims/role\"\n      },\n      \"provisioningClaims\": []\n    },\n    \"roles\": {\n      \"mappings\": [],\n      \"outboundProvisioningRoles\": []\n    },\n    \"federatedAuthenticators\": {\n      \"defaultAuthenticatorId\": \"R29vZ2xlT0lEQ0F1dGhlbnRpY2F0b3I\",\n      \"authenticators\": [\n        {\n          \"authenticatorId\": \"R29vZ2xlT0lEQ0F1dGhlbnRpY2F0b3I\",\n          \"isEnabled\": true,\n          \"properties\": [\n            {\n              \"key\": \"AdditionalQueryParameters\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"ClientId\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"ClientSecret\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"callbackUrl\",\n              \"value\": \"\"\n            }\n          ]\n        }\n      ]\n    },\n    \"provisioning\": {\n      \"jit\": {\n        \"isEnabled\": false,\n        \"scheme\": \"PROVISION_SILENTLY\",\n        \"userstore\": \"PRIMARY\"\n      },\n      \"outboundConnectors\": {\n        \"defaultConnectorId\": \"\",\n        \"connectors\": []\n      }\n    }\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{server-url}}/t/{{tenant-domain}}/api/server/v1/identity-providers/templates",
+							"protocol": "https",
+							"host": [
+								"{{server-url}}"
+							],
+							"path": [
+								"t",
+								"{{tenant-domain}}",
+								"api",
+								"server",
+								"v1",
+								"identity-providers",
+								"templates"
+							]
+						},
+						"description": "This API provides the capability to create a template for Google as a federated identity provider with authentication capability."
+					},
+					"response": []
+				},
+				{
+					"name": "Add authentication enabled Facebook template",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Facebook\",\n  \"description\": \"Authenticate users from Facebook.\",\n  \"image\": \"facebook\",\n  \"category\": \"DEFAULT\",\n  \"displayOrder\": 1,\n  \"idp\": {\n    \"name\": \"Facebook\",\n    \"description\": \"Identity provider for Facebook Federation\",\n    \"image\": \"facebook\",\n    \"isPrimary\": false,\n    \"isFederationHub\": false,\n    \"homeRealmIdentifier\": \"\",\n    \"certificate\": {\n      \"certificates\": []\n    },\n    \"alias\": \"https://localhost:9444/oauth2/token\",\n    \"claims\": {\n      \"userIdClaim\": {\n        \"uri\": \"http://wso2.org/claims/username\"\n      },\n      \"roleClaim\": {\n        \"uri\": \"http://wso2.org/claims/role\"\n      },\n      \"provisioningClaims\": []\n    },\n    \"roles\": {\n      \"mappings\": [],\n      \"outboundProvisioningRoles\": []\n    },\n    \"federatedAuthenticators\": {\n      \"defaultAuthenticatorId\": \"RmFjZWJvb2tBdXRoZW50aWNhdG9y\",\n      \"authenticators\": [\n        {\n          \"authenticatorId\": \"RmFjZWJvb2tBdXRoZW50aWNhdG9y\",\n          \"isEnabled\": true,\n          \"properties\": [\n            {\n              \"key\": \"Scope\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"UserInfoFields\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"ClientId\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"callBackUrl\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"ClientSecret\",\n              \"value\": \"\"\n            }\n          ]\n        }\n      ]\n    },\n    \"provisioning\": {\n      \"jit\": {\n        \"isEnabled\": false,\n        \"scheme\": \"PROVISION_SILENTLY\",\n        \"userstore\": \"PRIMARY\"\n      },\n      \"outboundConnectors\": {\n        \"defaultConnectorId\": \"\",\n        \"connectors\": []\n      }\n    }\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{server-url}}/t/{{tenant-domain}}/api/server/v1/identity-providers/templates",
+							"protocol": "https",
+							"host": [
+								"{{server-url}}"
+							],
+							"path": [
+								"t",
+								"{{tenant-domain}}",
+								"api",
+								"server",
+								"v1",
+								"identity-providers",
+								"templates"
+							]
+						},
+						"description": "This API provides the capability to create a template for Google as a federated identity provider with authentication, and provisioning capabilities."
+					},
+					"response": []
+				},
+				{
+					"name": "Add authentication enabled OIDC IdP template",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"OpenID Connect\",\n  \"description\": \"Authenticate users from an OIDC IdP.\",\n  \"image\": \"oidc\",\n  \"category\": \"DEFAULT\",\n  \"displayOrder\": 1,\n  \"idp\": {\n    \"name\": \"OpenIdConnect\",\n    \"description\": \"Identity provider for Federation via OpenId Connect\",\n    \"image\": \"oidc\",\n    \"isPrimary\": false,\n    \"isFederationHub\": false,\n    \"homeRealmIdentifier\": \"\",\n    \"certificate\": {\n      \"certificates\": []\n    },\n    \"alias\": \"https://localhost:9444/oauth2/token\",\n    \"claims\": {\n      \"userIdClaim\": {\n        \"uri\": \"http://wso2.org/claims/username\"\n      },\n      \"roleClaim\": {\n        \"uri\": \"http://wso2.org/claims/role\"\n      },\n      \"provisioningClaims\": []\n    },\n    \"roles\": {\n      \"mappings\": [],\n      \"outboundProvisioningRoles\": []\n    },\n    \"federatedAuthenticators\": {\n      \"defaultAuthenticatorId\": \"T3BlbklEQ29ubmVjdEF1dGhlbnRpY2F0b3I\",\n      \"authenticators\": [\n        {\n          \"authenticatorId\": \"T3BlbklEQ29ubmVjdEF1dGhlbnRpY2F0b3I\",\n          \"isEnabled\": true,\n          \"properties\": [\n            {\n              \"key\": \"OAuth2TokenEPUrl\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"IsUserIdInClaims\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"callbackUrl\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"IsBasicAuthEnabled\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"ClientId\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"commonAuthQueryParams\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"UserInfoUrl\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"OAuth2AuthzEPUrl\",\n              \"value\": \"\"\n            },\n            {\n              \"key\": \"ClientSecret\",\n              \"value\": \"\"\n            }\n          ]\n        }\n      ]\n    },\n    \"provisioning\": {\n      \"jit\": {\n        \"isEnabled\": false,\n        \"scheme\": \"PROVISION_SILENTLY\",\n        \"userstore\": \"PRIMARY\"\n      },\n      \"outboundConnectors\": {\n        \"defaultConnectorId\": \"\",\n        \"connectors\": []\n      }\n    }\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{server-url}}/t/{{tenant-domain}}/api/server/v1/identity-providers/templates",
+							"protocol": "https",
+							"host": [
+								"{{server-url}}"
+							],
+							"path": [
+								"t",
+								"{{tenant-domain}}",
+								"api",
+								"server",
+								"v1",
+								"identity-providers",
+								"templates"
+							]
+						},
+						"description": "This API provides the capability to create a template for Google as a federated identity provider with authentication, and provisioning capabilities."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9080283e-6a05-4af7-9ccd-3e62d89ec633",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4abf8a4c-1292-45f6-bd47-6a7b0b1df4b2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d87f7635-3c21-4411-b595-5fe6f9a3f79d",
+			"key": "tenant-domain",
+			"value": "carbon.super",
+			"type": "string"
+		},
+		{
+			"id": "67cd70a9-8cb3-487e-98a2-39b5316ac85e",
+			"key": "server-url",
+			"value": "localhost:9443",
+			"type": "string"
+		},
+		{
+			"id": "7d98ce13-9295-4aa1-80fe-460e7d8a16b3",
+			"key": "baseUrl",
+			"value": "https://{{server-url}}/t/{{tenant-domain}}/api/server/v1",
+			"type": "string"
+		},
+		{
+			"id": "33bf5efe-757c-4762-abb5-2fad12001f07",
+			"key": "username",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"id": "8cb62006-bcab-4e2b-80c5-c57be6e3a3e2",
+			"key": "password",
+			"value": "admin",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
